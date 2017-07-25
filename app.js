@@ -47,7 +47,10 @@ function apiCallTwo(name){
       var articles = response.articles;
       var html = "<ul id='list'>";
       $.each(articles, function(index, article) {
-        html += "<li>" + article.title + "</li>";
+        var title = article.title;
+        var description = article.description;
+        var link = article.url;
+        html += "<li class='items'>" + "<h3>" + title + "</h3>" + "<p>" + description + "</p>" + link + "</li>";
       });
       html += "</ul>";
       $(".article-list").html(html);
