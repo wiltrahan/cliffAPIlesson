@@ -15,6 +15,9 @@ body {
 .form-control {
   background-color: #F9F9F9;
   margin-top: 20px;
+  width: 40%;
+  font-family: LinLib;
+  font-size: 1.2em;
 }
 
 .btn {
