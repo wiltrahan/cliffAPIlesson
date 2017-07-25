@@ -1,4 +1,10 @@
-$(document).ready(function() {
+var myKey = config.token;
+
+var model = {
+  sourceNames: []
+};
+
+function apiCallOne() {
   var url = "https://newsapi.org/v1/sources";
   var data = {
     language: "en",
@@ -9,34 +15,49 @@ $(document).ready(function() {
     data: data,
     type: "GET",
     success: function(response) {
-      // console.log(response);
-      // console.log(response.sources[2]);
       var sources = response.sources;
-      // console.log(sources[2]);
-      var html = "<select class='form-control' id='source'>";
+      var html = "<select class='form-control' id='slectedName'>";
       $.each(sources, function(index, source) {
-        // console.log(source.id);
+        model.sourceNames.push(source.id);
         html += "<option value=" + index + ">" + source.name + "</option>";
-      })
+      });
       html += "</select>";
       $(".form-group").html(html);
     }
   });
 
+  $("#source").submit(function(evt) {
+    evt.preventDefault();
+    var mediaIndex = $('#slectedName option:selected').val();
+    apiCallTwo(mediaIndex);
+  })
+};
 
-  var articleUrl = "https://newsapi.org/v1/articles";
-  var articleData = {
-    source: ""
-  }
+function apiCallTwo(name){
+  var url = "https://newsapi.org/v1/articles";
+  var data = {
+    source: model.sourceNames[name],
+    apiKey: myKey
+  };
+  $.ajax({
+    url: url,
+    data: data,
+    type: "GET",
+    success: function(response) {
+      var articles = response.articles;
+      var html = "<ul id='list'>";
+      $.each(articles, function(index, article) {
+        html += "<li>" + article.title + "</li>";
+      });
+      html += "</ul>";
+      $(".article-list").html(html);
+    }
+  })
+
+}
+
+$(document).ready(function() {
+  apiCallOne();
 });
 
-// $('input:button').click(function() {
-//     alert($(this).val());
-// });​
 
-//after user selects newsSource
-//have list of links from source show up on page
-//going to need second API call
-//send ID
-//git init this
-//branch off master
