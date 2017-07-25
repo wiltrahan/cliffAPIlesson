@@ -4,19 +4,33 @@
 }
 
 body {
-  background-color: white;
+  background-color: #EDF2F4;
 }
 
-#about {
+#media {
   font-family: LinLib;
   font-size: 3em;
+  color: #2B2D42;
+}
+.form-control {
+  background-color: #F9F9F9;
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: #8D99AE;
+  border: 0px;
+}
+
+.btn-primary:hover {
+  background-color: #646675;
 }
 
 ul {
-  background-color: #292F36;
+  background-color: #D90429;
   padding-left: 0px;
   margin-bottom: 20px;
-
+  border-radius: 5px;
 }
 
 ul li {

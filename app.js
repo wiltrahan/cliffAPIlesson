@@ -60,7 +60,7 @@ function apiCallTwo(name){
       });
       html += "</ul>";
       $(".article-list").html(html);
-      $("#about").text(model.sourceNames[name].toUpperCase());
+      $("#media").text(model.sourceNames[name].toUpperCase());
     }
   })
 
