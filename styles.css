@@ -1,4 +1,41 @@
+@font-face {
+    font-family: LinLib;
+    src: url('LinLibertine_Rah.ttf');
+}
+
+body {
+  background-color: white;
+}
+
+#about {
+  font-family: LinLib;
+  font-size: 3em;
+}
+
 ul {
+  background-color: #292F36;
+  padding-left: 0px;
+  margin-bottom: 20px;
+
+}
+
+ul li {
+  padding: 15px;
   list-style-type: none;
-  padding-top: 10px;
+  margin-top: 2px;
+  font-family: LinLib;
+}
+li {
+  background-color: #C5C3C6;
+}
+
+li:nth-child(odd) {
+  background-color: #DCDCDD;
+}
+
+h3 {
+  font-size: 2em;
+}
+p {
+  font-size: 20px;
 }

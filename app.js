@@ -4,6 +4,11 @@ var model = {
   sourceNames: []
 };
 
+//#2 first call is made here, getting all sources, and putting them into a form
+//all names & ids (value) are pushed into model
+//user clicks and form is submitted
+//second api call is made with the id (value number that corresponds) that was selected
+
 function apiCallOne() {
   var url = "https://newsapi.org/v1/sources";
   var data = {
@@ -29,6 +34,7 @@ function apiCallOne() {
   $("#source").submit(function(evt) {
     evt.preventDefault();
     var mediaIndex = $('#slectedName option:selected').val();
+
     apiCallTwo(mediaIndex);
   })
 };
@@ -54,10 +60,13 @@ function apiCallTwo(name){
       });
       html += "</ul>";
       $(".article-list").html(html);
+      $("#about").text(model.sourceNames[name].toUpperCase());
     }
   })
 
 }
+
+//#1 WHEN DOM LOADS, FIRST CALL IS MADE
 
 $(document).ready(function() {
   apiCallOne();
